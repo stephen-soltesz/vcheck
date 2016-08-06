@@ -12,7 +12,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "hashicorp/precise64"
+  # config.vm.box = "hashicorp/precise64"
+  config.vm.box = "ubuntu/xenial64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -66,10 +67,14 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
      apt-get update
-     apt-get install -y apache2 ipython unzip python-pip
+     apt-get install -y apache2 ipython unzip python-pip git vim-nox
 	 wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.40.zip
 	 unzip -d /usr/local ./google_appengine_1.9.40.zip 
 	 pip install gviz_data_table
 	 pip install google-api-python-client
+	 # git clone https://github.com/GoogleCloudPlatform/python-docs-samples
+
   SHELL
+  config.vm.network :forwarded_port, guest: 8000, host: 8000
+  config.vm.network :forwarded_port, guest: 8080, host: 8080
 end
