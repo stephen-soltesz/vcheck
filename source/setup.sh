@@ -1,5 +1,5 @@
 set -x
-sudo pip install --upgrade --user googleapiclient gviz-data-table
+sudo pip install --upgrade --user google-api-python-client gviz-data-table
 function copylib() {
   $(pip show $1  | egrep "^Location|^Requires" | awk -F ": " '{print "export "$1"="$2}' | sed -e "s/, /,/g")
   if [ -e $Location/$1 ]; then
