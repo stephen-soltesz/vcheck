@@ -13,7 +13,8 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   # config.vm.box = "hashicorp/precise64"
-  config.vm.box = "ubuntu/xenial64"
+  # config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "boxcutter/ubuntu1604"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -38,7 +39,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  #config.vm.synced_folder "./", "/vagrant"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -70,6 +71,7 @@ Vagrant.configure("2") do |config|
      apt-get install -y apache2 ipython unzip python-pip git vim-nox
 	 wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.40.zip
 	 unzip -d /usr/local ./google_appengine_1.9.40.zip 
+	 pip install --upgrade pip
 	 pip install gviz_data_table
 	 pip install google-api-python-client
 	 # git clone https://github.com/GoogleCloudPlatform/python-docs-samples
